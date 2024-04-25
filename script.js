@@ -11,3 +11,5 @@ let scores, roundScore, activePlayer, gamePlaying;
 
 
 init();
+
+
