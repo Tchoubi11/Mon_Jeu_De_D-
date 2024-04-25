@@ -31,7 +31,7 @@ document.querySelector('#roll').addEventListener('click', function() {
     if (gamePlaying) {
         scores[activePlayer - 1] += roundScore;
         document.querySelector('#global-' + activePlayer).textContent = scores[activePlayer - 1];
-
+//le 1er joueur à atteindre 100 points a gagné le jeu
         if (scores[activePlayer - 1] >= 100) {
             document.querySelector('#score-' + activePlayer).classList.add('active');
             document.querySelector('#score-' + activePlayer).textContent = 'Winner!';
@@ -41,3 +41,30 @@ document.querySelector('#roll').addEventListener('click', function() {
         }
     }
 });
+
+
+//Appélons la fonction nextPlayer qui change de joueur lorsqu'un jouer lance 1
+function nextPlayer() {
+    roundScore = 0;
+    document.getElementById('round-1').textContent = '0';
+    document.getElementById('round-2').textContent = '0';
+ if (activePlayer==1){activePlayer=2}else{activePlayer=1}
+    document.getElementById('score-1').classList.toggle('active');
+    document.getElementById('score-2').classList.toggle('active');
+}
+
+//Appélons la fonction init.
+function init() {
+    scores = [0, 0];
+    roundScore = 0;
+    activePlayer = 1;
+    gamePlaying = true;
+
+    document.getElementById('round-1').textContent = '0';
+    document.getElementById('round-2').textContent = '0';
+    document.getElementById('global-1').textContent = '0';
+    document.getElementById('global-2').textContent = '0';
+
+    document.getElementById('score-1').classList.add('active');
+    document.getElementById('score-2').classList.remove('active');
+}
