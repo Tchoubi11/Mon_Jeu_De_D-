@@ -12,4 +12,17 @@ let scores, roundScore, activePlayer, gamePlaying;
 
 init();
 
+//Récupérons le bouton Lancer de Dé et vérifions ce qui se passe lorsque le joueur lance le dé
+document.querySelector('#roll').addEventListener('click', function() {
+    if (gamePlaying) {
+        //Générons un nombre entier entre 1 et 6 inclus,simulant le lancé de Dé à 6 faces
+        let dice = Math.floor(Math.random() * 6) + 1;
 
+        if (dice !== 1) {
+            roundScore += dice;
+            document.querySelector('#round-' + activePlayer).textContent = roundScore;
+        } else {
+            nextPlayer();
+        }
+    }
+});
