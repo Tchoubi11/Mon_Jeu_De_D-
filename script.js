@@ -25,4 +25,19 @@ document.querySelector('#roll').addEventListener('click', function() {
             nextPlayer();
         }
     }
+
+    //Récupérons le bouton Hold qui ajoute le score global du joueur après chaque lancé de Dé
+});document.querySelector('#hold').addEventListener('click', function() {
+    if (gamePlaying) {
+        scores[activePlayer - 1] += roundScore;
+        document.querySelector('#global-' + activePlayer).textContent = scores[activePlayer - 1];
+
+        if (scores[activePlayer - 1] >= 100) {
+            document.querySelector('#score-' + activePlayer).classList.add('active');
+            document.querySelector('#score-' + activePlayer).textContent = 'Winner!';
+            gamePlaying = false;
+        } else {
+            nextPlayer();
+        }
+    }
 });
